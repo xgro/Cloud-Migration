@@ -1,0 +1,137 @@
+openapi: '3.0.2'
+info:
+  title: 모놀리틱 사내 정보 시스템
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /user/login:
+    post:
+      description: '로그인'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/loginPayload'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    example: 'JWT 토큰'
+  /user/signup:
+    post:
+      description: '회원가입'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/signupPayload'
+      responses:
+        '200':
+          description: OK
+  /user:
+    get:
+      security:
+        - bearerAuth: []
+      description: '사용자 토큰 검증, Authorization 헤더에 Bearer {token} 과 같은 형태로 전달합니다.'
+      parameters: []
+      responses:
+        '200':
+          description: Bearer 토큰 검증에 성공한 경우
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        '401':
+          description: 토큰이 전달되지 않거나, 토큰 검증에 실패한 경우
+  /product:
+    get:
+      description: '제품 목록 조회'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: '제품 목록 조회 성공'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/product'
+    post:
+      description: '제품 추가'
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: '제품 추가 성공'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/product'
+
+
+components:
+  securitySchemes:
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+# security:
+#   - bearerAuth: []         # use the same name as above
+
+  schemas:
+    loginPayload:
+      type: object
+      properties:
+        loginname:
+          type: string
+          example: 'kimcoding'
+        password:
+          type: string
+          example: 'supersecret'
+    signupPayload:
+      type: object
+      properties:
+        loginname:
+          type: string
+          example: 'kimcoding'
+        password:
+          type: string
+          example: 'supersecret'
+        name:
+          type: string
+          example: '김코딩'
+    user:
+      type: object
+      properties:
+        loginname:
+          type: string
+          example: 'kimcoding'
+        name:
+          type: string
+          example: '김코딩'
+        role:
+          type: string
+          example: 'member'
+    product:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 1
+        name:
+          type: string
+          example: '캘리포니아산 사과'
+        price:
+          type: number
+          example: 599000
+        description:
+          type: string
+          example: '800만 화소의 5G를 지원하는 맛있는 사과'

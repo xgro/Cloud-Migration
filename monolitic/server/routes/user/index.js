@@ -1,6 +1,7 @@
 'use strict'
 
 module.exports = async function (fastify, opts) {
+  // authorized user
   fastify.post('/login', async function (request, reply) {
     const {loginname, password} = request.body
     const connection = await fastify.mysql.getConnection()

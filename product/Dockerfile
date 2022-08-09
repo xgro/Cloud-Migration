@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:16-slim
+FROM --platform=linux/amd64 node:16-alpine
 # FROM node:16-slim
 
 # 앱 디렉터리 생성

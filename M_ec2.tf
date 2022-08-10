@@ -2,13 +2,13 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 
-  name = "monolitic"
+  name = "monolithic"
 
-  ami                    = "ami-0c9bb9182a8d3321f"
+  ami                    = data.aws_ami.monolithic.image_id
   instance_type          = "t2.micro"
   key_name               = "serverInstance"
   monitoring             = true
-  vpc_security_group_ids = [aws_security_group.monolitic_security_group.id]
+  vpc_security_group_ids = [aws_security_group.monolithic_security_group.id]
   subnet_id              = module.vpc_mono.private_subnets[0]
 
   tags = {
@@ -17,6 +17,14 @@ module "ec2_instance" {
   }
 }
 
+data "aws_ami" "monolithic" {
+  most_recent      = true
+  owners = ["self"]
+  filter {
+    name   = "name"
+    values = ["monolithic"]
+  }
+}
 
 module "ec2_instance_bastion" {
   source  = "terraform-aws-modules/ec2-instance/aws"
@@ -24,7 +32,7 @@ module "ec2_instance_bastion" {
 
   name = "bastion"
 
-  ami                    = "ami-0a8bc755297b74eb6"
+  ami                    = data.aws_ami.bastion.image_id
   instance_type          = "t2.micro"
   key_name               = "bsHost"
   monitoring             = true
@@ -34,5 +42,14 @@ module "ec2_instance_bastion" {
   tags = {
     Terraform   = "true"
     Environment = "dev"
+  }
+}
+
+data "aws_ami" "bastion" {
+  most_recent      = true
+  owners = ["self"]
+  filter {
+    name   = "name"
+    values = ["bastion"]
   }
 }

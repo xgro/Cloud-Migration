@@ -17,14 +17,14 @@ resource "aws_security_group" "bastion" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name        = "monolitic"
+    Name        = "monolithic"
     Environment = "dev"
   }
 }
 
-# monolitic_EC2 security group. CIDR and port ingress can be changed as required.
-resource "aws_security_group" "monolitic_security_group" {
-  name   = "for_monolitic"
+# monolithic_EC2 security group. CIDR and port ingress can be changed as required.
+resource "aws_security_group" "monolithic_security_group" {
+  name   = "for_monolithic"
   vpc_id = module.vpc_mono.vpc_id
 
   egress {
@@ -35,39 +35,39 @@ resource "aws_security_group" "monolitic_security_group" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name        = "monolitic"
+    Name        = "monolithic"
     Environment = "dev"
   }
 }
 
-resource "aws_security_group_rule" "sg_ingress_rule_to_monolitic_http" {
+resource "aws_security_group_rule" "sg_ingress_rule_to_monolithic_http" {
   type              = "ingress"
   description       = "Allow from anyone on port 80"
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.monolitic_security_group.id
+  security_group_id = aws_security_group.monolithic_security_group.id
 }
 
-resource "aws_security_group_rule" "sg_ingress_rule_to_monolitic_https" {
+resource "aws_security_group_rule" "sg_ingress_rule_to_monolithic_https" {
   type              = "ingress"
   description       = "Allow from anyone on port 22"
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.monolitic_security_group.id
+  security_group_id = aws_security_group.monolithic_security_group.id
 }
 
-resource "aws_security_group_rule" "sg_ingress_rule_to_monolitic_ssh" {
+resource "aws_security_group_rule" "sg_ingress_rule_to_monolithic_ssh" {
   type              = "ingress"
   description       = "Allow from anyone on port 22"
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.monolitic_security_group.id
+  security_group_id = aws_security_group.monolithic_security_group.id
 }
 
 
@@ -90,7 +90,7 @@ resource "aws_security_group" "rds" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name        = "monolitic"
+    Name        = "monolithic"
     Environment = "dev"
   }
 }

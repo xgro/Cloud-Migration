@@ -63,7 +63,7 @@ resource "aws_ecs_task_definition" "ecs_taskdef" {
   container_definitions = jsonencode([
     {
       name      = "product"
-      image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/stock-management-api:latest"
+      image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${data.aws_region.current.name}.amazonaws.com/${var.ECR_repo}:latest"
       essential = true
       portMappings = [
         {

@@ -18,8 +18,8 @@ resource "aws_service_discovery_service" "shared" {
   }
 }
 
-resource "aws_service_discovery_instance" "example" {
-  instance_id = "monolitic-instance-id"
+resource "aws_service_discovery_instance" "ec2" {
+  instance_id = "monolithic-instance"
   service_id  = aws_service_discovery_service.shared.id
 
   attributes = {

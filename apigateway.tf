@@ -1,6 +1,6 @@
 # Create the API Gateway HTTP endpoint
 resource "aws_apigatewayv2_api" "apigw_http_endpoint" {
-  name          = "accompany-endpoint"
+  name          = var.api_gateway_name
   protocol_type = "HTTP"
 }
 
@@ -23,7 +23,7 @@ resource "aws_apigatewayv2_api_mapping" "domain" {
 
 
 resource "aws_apigatewayv2_domain_name" "domain" {
-  domain_name = "api.xgro.be"
+  domain_name = var.domain_name
 
   domain_name_configuration {
     certificate_arn = data.aws_acm_certificate.issued.arn
@@ -98,7 +98,7 @@ resource "aws_apigatewayv2_route" "apigw_route_ec2" {
 # Create the VPC Link configured with the private subnets. Security groups are kept empty here, but can be configured as required.
 resource "aws_apigatewayv2_vpc_link" "vpclink_apigw_to_ec2" {
   name               = "vpclink_apigw_to_ec2"
-  security_group_ids = [aws_security_group.monolitic_security_group.id]
+  security_group_ids = [aws_security_group.monolithic_security_group.id]
   subnet_ids         = module.vpc_mono.private_subnets
 }
 

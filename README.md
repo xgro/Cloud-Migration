@@ -1,4 +1,4 @@
-#  👋
+# Cloud Migration 👋
 <p>
   <a href="#" target="_blank">
     <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
@@ -22,12 +22,9 @@
 <br>
 
 # Architecture
+![architec](https://user-images.githubusercontent.com/76501289/183823540-e60c1e13-8c1f-4b1a-b6f8-b661d8be8451.png)
 
-
-
-
-
-## Monolitic 서버__ /Monolithic
+## 👉 Monolitic 서버__ /Monolithic
 
 - 별도의 VPC 및 Private Subnet 배치
 - Private EC2에서 외부 인터넷과 통신이 가능해야 하므로, NAT Gateway 사용함.
@@ -35,13 +32,16 @@
 
 <br>
 
-### CI/CD 
+### ✅ CI/CD 
 aws_codedeploy를 이용하여 배포 파이프라인을 구축함.
+![ㅇ](https://user-images.githubusercontent.com/76501289/183824365-7f9f7ac1-84e1-4cb8-9059-7b0fadfafddd.png)
 
 <br>
 <br>
+<br>
+<br>
 
-## 제품 관리 API__ /product
+## 👉 제품 관리 API__ /product
 
 - 제품 관리 API 컨테이너 구축
 - 초기 구축은 ECS Fargate로 진행하며, 추후 EKS 고려
@@ -50,14 +50,16 @@ aws_codedeploy를 이용하여 배포 파이프라인을 구축함.
 
 <br>
 
-### CI/CD 
+### ✅ CI/CD 
 Github Action을 이용하여 CI/CD 구축함.
-
+![ㅇㅇㅇ](https://user-images.githubusercontent.com/76501289/183824381-15265572-f4d1-48b3-946c-731a43d41a4b.png)
 
 <br>
 <br>
+<br>
+<br>
 
-## Terraform__ /infra
+## 👉 Terraform__ /infra
 - 테라폼을 이용하여 IaC로 인프라를 관리
 - EC2는 기존 EC2 환경에서 제작된 AMI를 이용해서 복원함
 - RDS는 스냅샷을 이용해서 서비스를 복원함
@@ -65,9 +67,11 @@ Github Action을 이용하여 CI/CD 구축함.
 
 <br>
 
-### CI/CD 
+### ✅ CI/CD 
 Github Action을 이용하여 인프라를 관리함.
+![tf](https://user-images.githubusercontent.com/76501289/183824396-00d4df3a-d5a6-4ab0-8d61-97f388cbdce4.png)
 
+<br>
 <br>
 <br>
 <br>

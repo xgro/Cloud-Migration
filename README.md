@@ -31,7 +31,8 @@
 - 허가된 인스턴스를 통해 Private EC2를 제어할 수 있어야 함.
 
 ### ✅ CI/CD 
-aws_codedeploy를 이용하여 배포 파이프라인을 구축함.
+aws_codedeploy를 이용하여 배포 파이프라인을 구축  
+
 ![ㅇ](https://user-images.githubusercontent.com/76501289/183824365-7f9f7ac1-84e1-4cb8-9059-7b0fadfafddd.png)
 
 <br>
@@ -47,7 +48,8 @@ aws_codedeploy를 이용하여 배포 파이프라인을 구축함.
 - Private 환경에서 AWS 서비스에 접근하기 위해 VPC 엔드포인트를 이용함
 
 ### ✅ CI/CD 
-Github Action을 이용하여 CI/CD 구축함.
+Github Action을 이용하여 CI/CD 구축
+
 ![ㅇㅇㅇ](https://user-images.githubusercontent.com/76501289/183824381-15265572-f4d1-48b3-946c-731a43d41a4b.png)
 
 <br>
@@ -61,7 +63,8 @@ Github Action을 이용하여 CI/CD 구축함.
 - RDS는 스냅샷을 이용해서 서비스를 복원함
 
 ### ✅ CI/CD 
-Github Action을 이용하여 인프라를 관리함.
+Github Action을 이용하여 인프라 관리  
+
 ![tf](https://user-images.githubusercontent.com/76501289/183824396-00d4df3a-d5a6-4ab0-8d61-97f388cbdce4.png)
 
 <br>

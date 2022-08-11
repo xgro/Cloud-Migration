@@ -99,9 +99,16 @@ DB에 등록되어 있는 제품의 정보를 삭제한다.
     JWT_SECRET=<your_secret_value>
    ```
 
-3. npm start 스크립트를 이용하여 서버를 작동한다.
-   ```sh  
-   npm start
+5. npm run을 이용하여 서버를 작동한다.
+   ```sh
+   # test 스크립트 실행
+   npm run test
+   
+   # 로컬에서 개발 환경 실행
+   npm run dev
+   
+   # fastify 서버 작동
+   npm run start
    ```   
 <br>
 <br>

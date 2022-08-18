@@ -1,0 +1,5 @@
+# backend.hcl
+bucket         = your_bucket_name
+region         = "ap-northeast-2"
+dynamodb_table = "terraform-lock"
+encrypt        = true

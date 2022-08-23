@@ -76,7 +76,7 @@ Github Action을 이용하여 CI/CD 구축
 ![ㅇㅇㅇ](https://user-images.githubusercontent.com/76501289/183824381-15265572-f4d1-48b3-946c-731a43d41a4b.png)
 
 ### ⁉️ How it works  
-1. Github Release
+1. Github `Release`
 2. Github Action이 트리거 되며 AWS ECS에 배포 시작
 3. Dockerfile에 따라 이미지를 빌드하고 AWS ECR에 이미지를 `push`
 4. TaskDefinition에 따라 새로운 이미지가 적용된 컨테이너가 적용된 ECS 서비스 업데이트
@@ -104,7 +104,7 @@ Github Action을 이용하여 인프라 관리
 ![tf](https://user-images.githubusercontent.com/76501289/183824396-00d4df3a-d5a6-4ab0-8d61-97f388cbdce4.png)
 
 ### ⁉️ How it works  
-1. Github main branch `push`
+1. Github `release`
 2. Github Action이 트리거 되며 인프라 관리 시작
 3. AWS credentials를 이용하여 발행된 액세스 키에 대해서 접속하여 필요한 서비스를 구축함. 
 4. S3, DynamoDB로 부터 tfstate 및 lock 파일을 참조함 
